@@ -1,0 +1,72 @@
+[client]
+
+max_allowed_packet              = 1G
+default-character-set           = utf8mb4
+
+[mysql]
+
+no_auto_rehash
+max_allowed_packet              = 1G
+prompt                          = '\u@\h [\d]> '
+default_character_set           = utf8mb4
+
+[mysqldump]
+
+quote-names
+max_allowed_packet              = 1G
+
+[mysqld_safe]
+
+max_allowed_packet              = 1G
+
+[mysqld]
+rocksdb
+default-storage-engine      = rocksdb
+innodb                      = OFF
+default-tmp-storage-engine  = MyISAM
+log-bin                     = 0
+binlog_format               = ROW
+collation-server            = latin1_bin
+transaction-isolation       = READ-COMMITTED
+
+init-connect                    = "SET NAMES utf8mb4"
+character_set_server            = utf8mb4
+collation_server                = utf8_unicode_ci
+character-set-client-handshake  = FALSE
+character-set-server            = "utf8mb4"
+collation-server                = "utf8mb4_unicode_ci"
+autocommit                      = 1
+max_allowed_packet              = 1G
+default-time-zone               = +00:00
+bind-address                    = 0.0.0.0
+skip-external-locking
+skip_name_resolve
+
+# mariadb query cache
+query_cache_type            = 1
+query_cache_limit           = 256K
+query_cache_min_res_unit    = 2k
+query_cache_size            = 80M
+
+# mariadb table open cache
+table_open_cache    = 400
+
+rocksdb_max_open_files              = -1
+rocksdb_wal_recovery_mode           = 2
+rocksdb_max_background_jobs         = 8
+rocksdb_max_total_wal_size          = 4G
+rocksdb_block_size                  = 16384
+rocksdb_block_cache_size            = 32G
+rocksdb_table_cache_numshardbits    = 6
+
+# rate limiter
+rocksdb_bytes_per_sync              = 4194304
+rocksdb_wal_bytes_per_sync          = 4194304
+rocksdb_rate_limiter_bytes_per_sec  = 104857600 #100MB/s. Increase if you're running on higher spec machines
+
+# triggering compaction if there are many sequential deletes (Deletion Triggered Compaction
+rocksdb_compaction_sequential_deletes_count_sd  = 1
+rocksdb_compaction_sequential_deletes           = 199999
+rocksdb_compaction_sequential_deletes_window    = 200000
+
+rocksdb_default_cf_options = write_buffer_size=128m;target_file_size_base=32m;max_bytes_for_level_base=512m;level0_file_num_compaction_trigger=4;level0_slowdown_writes_trigger=10;level0_stop_writes_trigger=15;max_write_buffer_number=2;compression_per_level=kLZ4Compression;bottommost_compression=kZSTD;compression_opts=-14:6:0;block_based_table_factory={cache_index_and_filter_blocks=1;filter_policy=bloomfilter:10:false;whole_key_filtering=1};level_compaction_dynamic_level_bytes=true;optimize_filters_for_hits=true;compaction_pri=kMinOverlappingRatio
