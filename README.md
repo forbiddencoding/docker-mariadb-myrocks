@@ -1,5 +1,8 @@
 # mariadb-myrocks
 
+[![Docker Image CI](https://github.com/forbiddencoding/docker-mariadb-myrocks/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/forbiddencoding/docker-mariadb-myrocks/actions/workflows/docker-publish.yml)
+
+
 MariaDB latest docker with [RocksDB](https://rocksdb.org/) storage engine and enabled [query cache](https://mariadb.com/kb/en/query-cache/) and [table open cache](https://mariadb.com/kb/en/optimizing-table_open_cache/).
 
 
