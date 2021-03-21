@@ -43,7 +43,7 @@ skip-external-locking
 skip_name_resolve
 
 # mariadb query cache
-query_cache_type            = 1
+query_cache_type            = DEMAND
 query_cache_limit           = 256K
 query_cache_min_res_unit    = 2k
 query_cache_size            = 80M
